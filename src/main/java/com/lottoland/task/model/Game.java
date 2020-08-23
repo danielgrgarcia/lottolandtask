@@ -23,4 +23,7 @@ public class Game {
 	
 	// List of rounds
 	private List<Round> roundList;
+	
+	// Number of rounds started
+	private int roundsStarted;
 }
