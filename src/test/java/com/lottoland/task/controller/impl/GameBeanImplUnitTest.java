@@ -52,7 +52,7 @@ public class GameBeanImplUnitTest {
 	@DisplayName("Test newGame()")
 	@Test
 	void testnewGame() {
-		gameBeanImpl.newGame("danielg");
+		gameBeanImpl.newGame();
 		
 		assertTrue(gameBeanImpl.getGameList().size() == 2);	
 	}	

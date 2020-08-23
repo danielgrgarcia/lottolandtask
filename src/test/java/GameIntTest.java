@@ -112,6 +112,36 @@ class GameIntTest {
 	}
 	
 	@Test
+	void testRestartGameOneGameOneRoundThenPlayRound() {
+		//TODO test
+	}
+		
+	@Test
+	void testRestartGameFewGamesFirstOneRoundThenPlayRound() {
+		//TODO test
+	}
+	
+	@Test
+	void testRestartGameFewGamesGreaterFirstOneRoundThenPlayRound() {
+		//TODO test
+	}
+	
+	@Test
+	void testRestartGameOneGameFewRoundsThenPlayRound() {
+		//TODO test
+	}
+		
+	@Test
+	void testRestartGameFewGamesFirstFewRoundsThenPlayRound() {
+		//TODO test
+	}
+	
+	@Test
+	void testRestartGameFewGamesGreaterFirstFewRoundsThenPlayRound() {
+		//TODO test
+	}
+	
+	@Test
 	void testDeleteGameOneGameOneRound() {
 		//TODO test
 	}

@@ -61,7 +61,6 @@ public interface GameBean {
 		
 		try {
 			// Calculate the winner of the game		
-			// TODO algorithm for calculate winner
 			roundResult = 1;
 			
 			// Error if the result is not P1, P2 or draw
