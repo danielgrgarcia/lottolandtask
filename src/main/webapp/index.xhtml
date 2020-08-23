@@ -10,12 +10,26 @@
 
 	<h:form>
 		<h:commandButton value="New Game" action="#{gameBean.newGame()}"/>
+		<br/>
 		<h:outputText value="Username"></h:outputText>
 		<h:inputTextarea cols="20" rows="1" value="#{gameBean.user}" style="resize: none"/>
+		<br/>
+		<h:outputText value="Total rounds played"></h:outputText>
+		<h:inputTextarea cols="20" rows="1" value="#{gameBean.totalRounds}" style="resize: none"/>
+		<br/>
+		<h:outputText value="Total P1 wins"></h:outputText>
+		<h:inputTextarea cols="20" rows="1" value="#{gameBean.totalP1Wins}" style="resize: none"/>
+		<br/>
+		<h:outputText value="Total P2 wins"></h:outputText>
+		<h:inputTextarea cols="20" rows="1" value="#{gameBean.totalP2Wins}" style="resize: none"/>
+		<br/>
+		<h:outputText value="Total Draws"></h:outputText>
+		<h:inputTextarea cols="20" rows="1" value="#{gameBean.totalDraws}" style="resize: none"/>
 	</h:form>
-	
+	<br/>
 	<h:dataTable value="#{gameBean.getGameList()}" var="gameData" border="1">
 		<h:column>
+			<br/>
 			<h:form>
 				<h:inputTextarea cols="5" rows="1" readonly="true" value="#{gameBean.getUserGame(gameData.id)}" style="resize: none"/>
 				<h:commandButton value="Play Round" action="#{gameBean.playRound(gameData.id)}"/>
@@ -35,11 +49,11 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">Result</f:facet>
-					<h:outputText value="#{roundRes.roundResult}"></h:outputText>
+					<h:outputText value="#{roundRes.roundResultName}"></h:outputText>
 				</h:column>
 			</h:dataTable>
+			<br/>
 		</h:column>
-
 	</h:dataTable>
 	
 </h:body>

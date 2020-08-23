@@ -79,7 +79,8 @@ public interface GameBean {
 				.id(roundsStarted + 1)
 				.p1Choice(GameDAO.getGameValuesDef(valueP1))
 				.p2Choice(GameDAO.getGameValuesDef(valueP2))
-				.roundResult(GameDAO.getGameWinDef(roundResult))
+				.roundResultId(roundResult)
+				.roundResultName(GameDAO.getGameWinDef(roundResult))
 				.build();
 		
 		return round;

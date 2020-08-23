@@ -38,7 +38,8 @@ class GameBeanImplMockitoTest {
 				.id(1)
 				.p1Choice(GameDAO.getGameValuesDef(0))
 				.p2Choice(GameDAO.getGameValuesDef(1))
-				.roundResult(GameDAO.getGameWinDef(2))
+				.roundResultId(2)
+				.roundResultName(GameDAO.getGameWinDef(2))
 				.build();
 		
 		roundList.add(round);
@@ -65,7 +66,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(0))
 			.p2Choice(GameDAO.getGameValuesDef(0))
-			.roundResult(GameDAO.getGameWinDef(0))
+			.roundResultId(0)
+			.roundResultName(GameDAO.getGameWinDef(0))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -91,7 +93,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(0))
 			.p2Choice(GameDAO.getGameValuesDef(1))
-			.roundResult(GameDAO.getGameWinDef(2))
+			.roundResultId(2)
+			.roundResultName(GameDAO.getGameWinDef(2))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -117,7 +120,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(0))
 			.p2Choice(GameDAO.getGameValuesDef(2))
-			.roundResult(GameDAO.getGameWinDef(1))
+			.roundResultId(1)
+			.roundResultName(GameDAO.getGameWinDef(1))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -143,7 +147,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(1))
 			.p2Choice(GameDAO.getGameValuesDef(1))
-			.roundResult(GameDAO.getGameWinDef(0))
+			.roundResultId(0)
+			.roundResultName(GameDAO.getGameWinDef(0))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -169,7 +174,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(1))
 			.p2Choice(GameDAO.getGameValuesDef(0))
-			.roundResult(GameDAO.getGameWinDef(1))
+			.roundResultId(1)
+			.roundResultName(GameDAO.getGameWinDef(1))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -195,7 +201,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(1))
 			.p2Choice(GameDAO.getGameValuesDef(2))
-			.roundResult(GameDAO.getGameWinDef(2))
+			.roundResultId(2)
+			.roundResultName(GameDAO.getGameWinDef(2))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -221,7 +228,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(2))
 			.p2Choice(GameDAO.getGameValuesDef(2))
-			.roundResult(GameDAO.getGameWinDef(0))
+			.roundResultId(0)
+			.roundResultName(GameDAO.getGameWinDef(0))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -247,7 +255,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(2))
 			.p2Choice(GameDAO.getGameValuesDef(0))
-			.roundResult(GameDAO.getGameWinDef(2))
+			.roundResultId(2)
+			.roundResultName(GameDAO.getGameWinDef(2))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
@@ -273,7 +282,8 @@ class GameBeanImplMockitoTest {
 			.id(roundsStarted)
 			.p1Choice(GameDAO.getGameValuesDef(2))
 			.p2Choice(GameDAO.getGameValuesDef(1))
-			.roundResult(GameDAO.getGameWinDef(1))
+			.roundResultId(1)
+			.roundResultName(GameDAO.getGameWinDef(1))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);

@@ -22,6 +22,9 @@ public class Round {
 	// Player2 choice
 	private String p2Choice;
 	
-	//Round result
-	private String roundResult;
+	//Round result id
+	private int roundResultId;
+	
+	//Round result name
+	private String roundResultName;
 }

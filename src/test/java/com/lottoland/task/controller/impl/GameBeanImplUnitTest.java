@@ -30,7 +30,8 @@ public class GameBeanImplUnitTest {
 				.id(1)
 				.p1Choice(GameDAO.getGameValuesDef(0))
 				.p2Choice(GameDAO.getGameValuesDef(1))
-				.roundResult(GameDAO.getGameWinDef(2))
+				.roundResultId(2)
+				.roundResultName(GameDAO.getGameWinDef(2))
 				.build();
 		
 		roundList.add(round);
