@@ -3,11 +3,15 @@ package com.lottoland.task.controller.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.lottoland.task.controller.GameBean;
 import com.lottoland.task.model.Game;
 import com.lottoland.task.model.Round;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Communicate GameBean with Web
@@ -15,10 +19,13 @@ import lombok.Getter;
  * @author Daniel Garcia
  */
 @Getter
+@Setter
 public class GameBeanImpl implements GameBean {
 
 	private long gamesStarted = 0;
 	protected List<Game> gameList = new ArrayList<Game>();
+	
+	private static final Logger logger = LogManager.getLogger(GameBeanImpl.class);
 	
 	/**
 	 * Start new game
@@ -53,8 +60,11 @@ public class GameBeanImpl implements GameBean {
 	 * @param idGame the id of the game
 	 */
 	public void restartGame(long idGame) {
-		// TODO Auto-generated method stub
+		gameList.stream()
+	    .filter(game -> game.getId() == idGame)
+	    .findFirst().get().getRoundList().clear();
 		
+		logger.debug("idGame " + idGame + " restarted");
 	}
 
 	/**
@@ -62,8 +72,27 @@ public class GameBeanImpl implements GameBean {
 	 * @param idGame the id of the game
 	 */
 	public void deleteGame(long idGame) {
-		// TODO Auto-generated method stub
+		gameList.removeIf(game->game.getId() == idGame);
 		
+		logger.debug("idGame " + idGame + " removed");
 	}
-
+	
+	/**
+	 * Add new round to round list
+	 * @param idGame the id of the game
+	 */
+	public void playRound(long idGame) {
+		
+		// Get the number of round started
+		int roundsStarted = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundsStarted();
+		
+		// Create new round
+		gameList.stream()
+	    .filter(game -> game.getId() == idGame)
+	    .findFirst().get().getRoundList().add(newGameRound(idGame, roundsStarted));
+		
+		logger.debug("Played 1 round in idGame " + idGame);
+	}
 }

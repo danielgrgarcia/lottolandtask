@@ -38,6 +38,12 @@ public interface GameBean {
 	public void deleteGame(long idGame);
 	
 	/**
+	 * Add new round to round list
+	 * @param idGame the id of the game
+	 */
+	public void playRound(long idGame);
+	
+	/**
 	 * Create new round
 	 * @param idGame the id of the game
 	 * @param roundsStarted the number of rounds started
@@ -71,7 +77,7 @@ public interface GameBean {
 		
 		// Create new round
 		Round round = Round.builder()
-				.id(roundsStarted)
+				.id(roundsStarted + 1)
 				.p1Choice(GameDAO.getGameValuesDef(valueP1))
 				.p2Choice(GameDAO.getGameValuesDef(valueP2))
 				.roundResult(GameDAO.getGameWinDef(roundResult))
