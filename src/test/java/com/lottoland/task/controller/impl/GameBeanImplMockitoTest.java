@@ -53,9 +53,35 @@ class GameBeanImplMockitoTest {
 		gameList.add(game);	
 	}
 	
-	@DisplayName("Test playRound()")
+	@DisplayName("Test playRound00")
 	@Test
-	void testPlayRound() {
+	void testPlayRound00() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(0))
+			.p2Choice(GameDAO.getGameValuesDef(0))
+			.roundResult(GameDAO.getGameWinDef(0))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound01")
+	@Test
+	void testPlayRound01() {
 		
 		long idGame = 1;
 		
@@ -66,6 +92,188 @@ class GameBeanImplMockitoTest {
 			.p1Choice(GameDAO.getGameValuesDef(0))
 			.p2Choice(GameDAO.getGameValuesDef(1))
 			.roundResult(GameDAO.getGameWinDef(2))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound02")
+	@Test
+	void testPlayRound02() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(0))
+			.p2Choice(GameDAO.getGameValuesDef(2))
+			.roundResult(GameDAO.getGameWinDef(1))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound11")
+	@Test
+	void testPlayRound11() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(1))
+			.p2Choice(GameDAO.getGameValuesDef(1))
+			.roundResult(GameDAO.getGameWinDef(0))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound10")
+	@Test
+	void testPlayRound10() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(1))
+			.p2Choice(GameDAO.getGameValuesDef(0))
+			.roundResult(GameDAO.getGameWinDef(1))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound12")
+	@Test
+	void testPlayRound12() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(1))
+			.p2Choice(GameDAO.getGameValuesDef(2))
+			.roundResult(GameDAO.getGameWinDef(2))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound22")
+	@Test
+	void testPlayRound22() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(2))
+			.p2Choice(GameDAO.getGameValuesDef(2))
+			.roundResult(GameDAO.getGameWinDef(0))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound20")
+	@Test
+	void testPlayRound20() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(2))
+			.p2Choice(GameDAO.getGameValuesDef(0))
+			.roundResult(GameDAO.getGameWinDef(2))
+			.build();
+		
+		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
+		
+		gameBeanImpl.playRound(idGame);
+		
+		int result = gameList.stream()
+		    .filter(game -> game.getId() == idGame)
+		    .findFirst().get().getRoundList().size();
+			
+		assertTrue(result == 1);
+	}
+	
+	@DisplayName("Test playRound21")
+	@Test
+	void testPlayRound21() {
+		
+		long idGame = 1;
+		
+		long roundsStarted = 1;
+		
+		Round round = Round.builder()
+			.id(roundsStarted)
+			.p1Choice(GameDAO.getGameValuesDef(2))
+			.p2Choice(GameDAO.getGameValuesDef(1))
+			.roundResult(GameDAO.getGameWinDef(1))
 			.build();
 		
 		Mockito.when(gameBean.newGameRound(idGame, roundsStarted)).thenReturn(round);
