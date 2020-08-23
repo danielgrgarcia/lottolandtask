@@ -9,6 +9,7 @@ import com.lottoland.task.controller.impl.GameBeanImpl;
 import com.lottoland.task.dao.GameDAO;
 import com.lottoland.task.model.Round;
 import com.lottoland.task.util.GameException;
+import com.lottoland.task.util.GameUtil;
 
 /**
  * Interface to communicate GameBean with Web
@@ -61,7 +62,7 @@ public interface GameBean {
 		
 		try {
 			// Calculate the winner of the game		
-			roundResult = 1;
+			roundResult = GameUtil.calculateWinner(valueP1, valueP2);
 			
 			// Error if the result is not P1, P2 or draw
 			if(roundResult > 2){
