@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,12 +23,16 @@ import lombok.Setter;
  */
 
 @ManagedBean (name="gameBean")
-@SessionScoped
+@ViewScoped
 @Getter
 @Setter
 public class GameBeanImpl implements GameBean {
 
 	private long gamesStarted = 0;
+	private long totalRounds = 0;
+	private long totalP1Wins = 0;
+	private long totalP2Wins = 0;
+	private long totalDraws = 0;
 	protected List<Game> gameList = new ArrayList<Game>();
 	private String user = "";
 	private static final Logger logger = LogManager.getLogger(GameBeanImpl.class);
@@ -41,9 +45,11 @@ public class GameBeanImpl implements GameBean {
 		
 		// The first round is number 1
 		int roundsStarted = 1;
+		Round gameRound = newGameRound(gamesStarted, roundsStarted);
 		
 		// Add to roundList a new round
-		roundList.add(newGameRound(gamesStarted, roundsStarted));
+		roundList.add(gameRound);
+		setTotalCounters(gameRound.getRoundResultId());
 		
 		// Add new object of type Game
 		Game game = Game.builder()
@@ -98,9 +104,12 @@ public class GameBeanImpl implements GameBean {
 		    .findFirst().get().getRoundsStarted();
 		
 		// Create new round
+		Round gameRound = newGameRound(idGame, roundsStarted);
+		
 		gameList.stream()
 	    .filter(game -> game.getId() == idGame)
-	    .findFirst().get().getRoundList().add(newGameRound(idGame, roundsStarted));
+	    .findFirst().get().getRoundList().add(gameRound);
+		setTotalCounters(gameRound.getRoundResultId());
 		
 		logger.debug("Played 1 round in idGame " + idGame);
 	}
@@ -138,5 +147,24 @@ public class GameBeanImpl implements GameBean {
 		return gameList.stream()
 				.filter(game -> game.getId() == idGame)
 			    .findFirst().get().getRoundList().size();
+	}
+	
+	/**
+	 * Set counters of rounds, P1 wins, P2 wins and draws
+	 */
+	public void setTotalCounters(int resultId) {
+
+		totalRounds++;
+		switch (resultId) {
+			case 0:  
+				totalDraws++;
+			break;
+			case 1:  
+				totalP1Wins++;
+			break;
+			case 2:  
+				totalP2Wins++;
+			break;
+		}
 	}
 }
