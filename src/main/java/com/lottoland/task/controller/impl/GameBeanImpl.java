@@ -3,6 +3,9 @@ package com.lottoland.task.controller.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,19 +21,22 @@ import lombok.Setter;
  * 
  * @author Daniel Garcia
  */
+
+@ManagedBean (name="gameBean")
+@SessionScoped
 @Getter
 @Setter
 public class GameBeanImpl implements GameBean {
 
 	private long gamesStarted = 0;
 	protected List<Game> gameList = new ArrayList<Game>();
-	
+	private String user = "";
 	private static final Logger logger = LogManager.getLogger(GameBeanImpl.class);
 	
 	/**
 	 * Start new game
 	 */
-	public void newGame(String user) {
+	public void newGame() {
 		List<Round> roundList = new ArrayList<Round>();
 		
 		// The first round is number 1
@@ -49,6 +55,9 @@ public class GameBeanImpl implements GameBean {
 		gameList.add(game);
 		
 		logger.debug("New idGame " + gamesStarted);
+		
+		// The user variable is reset to appears empty in the text box
+		user = "";
 		
 		// Increment the counter of games started
 		gamesStarted++;
@@ -94,5 +103,40 @@ public class GameBeanImpl implements GameBean {
 	    .findFirst().get().getRoundList().add(newGameRound(idGame, roundsStarted));
 		
 		logger.debug("Played 1 round in idGame " + idGame);
+	}
+	
+	/**
+	 * Get username of the game
+	 * @param idGame the id of the game
+	 * @return the username of the game
+	 */
+	public String getUserGame(long idGame) {
+		return gameList.stream()
+			.filter(game -> game.getId() == idGame)
+			.findFirst().get().getUser();
+	}
+	
+	/**
+	 * Get the results of the rounds that belongs to a game
+	 * @param idGame the id of the game
+	 * @return List of rounds
+	 */
+	public List<Round> getRoundsResults(long idGame) {
+
+		return gameList.stream()
+				.filter(game -> game.getId() == idGame)
+				.findFirst().get().getRoundList();
+	}
+	
+	/**
+	 * Get number of actual rounds
+	 * @param idGame the id of the game
+	 * @return the number of actual rounds
+	 */
+	public int getActualRoundsNum(long idGame) {
+
+		return gameList.stream()
+				.filter(game -> game.getId() == idGame)
+			    .findFirst().get().getRoundList().size();
 	}
 }

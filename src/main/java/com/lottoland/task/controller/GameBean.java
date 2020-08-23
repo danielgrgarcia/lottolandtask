@@ -21,9 +21,8 @@ public interface GameBean {
 	
 	/**
 	 * Start new game
-	 * @param user the username
 	 */
-	public void newGame(String user);
+	public void newGame();
 	
 	/**
 	 * Restart the game
